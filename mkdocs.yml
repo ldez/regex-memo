@@ -1,0 +1,54 @@
+site_name: Expressions régluières (mémo)
+site_description: Expressions régluières (mémo)
+site_author: Fernandez Ludovic
+#site_url: https://foo.bar.io
+
+repo_name: 'GitHub'
+repo_url: 'https://github.com/ldez/regex-memo'
+
+# Documentation
+docs_dir: 'docs'
+
+theme: material
+
+#copyright: "Copyright &copy; 2011-2017 XXXX"
+
+#google_analytics:
+#  - 'UA-XXXXX-X'
+#  - 'foo.bar.io'
+
+# Options
+extra:
+  feature:
+    tabs: false
+  i18n:
+    prev: 'Previous'
+    next: 'Next'
+  social:
+    - type: 'github'
+      link: 'https://github.com/ldez'
+    - type: 'twitter'
+      link: 'https://twitter.com/ludnadez'
+
+theme_dir: docs/theme/
+
+extra_css:
+  - theme/styles/extra.css
+
+markdown_extensions:
+  - admonition
+  - codehilite
+#  - codehilite(guess_lang=false)
+  - toc(permalink=true)
+
+# Page tree
+pages:
+- Accueil: index.md
+- Caractères: caracteres.md
+- Meta-caractères: meta-caracteres.md
+- Assertions: assertions.md
+- Ensembles: ensembles.md
+- Classes de caractères: classes-de-caracteres.md
+- Quantificateurs: quantificateurs.md
+- Groupes de capture: groupes-de-capture.md
+- Pièges: pieges.md
