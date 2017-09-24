@@ -13,9 +13,9 @@ theme: material
 
 #copyright: "Copyright &copy; 2011-2017 XXXX"
 
-#google_analytics:
-#  - 'UA-XXXXX-X'
-#  - 'foo.bar.io'
+google_analytics:
+  - 'UA-62168601-5'
+  - 'auto'
 
 # Options
 extra:
