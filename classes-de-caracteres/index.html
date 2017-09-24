@@ -1,0 +1,1540 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Expressions régluières (mémo)">
+      
+      
+      
+        <meta name="author" content="Fernandez Ludovic">
+      
+      
+        <link rel="shortcut icon" href="../assets/images/favicon.png">
+      
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.10.1">
+    
+    
+      
+        <title>Classes de caractères - Expressions régluières (mémo)</title>
+      
+    
+    
+      <script src="../assets/javascripts/modernizr-e826f8942a.js"></script>
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application-a20f419c8e.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../theme/styles/extra.css">
+    
+    
+  </head>
+  
+  
+  
+  
+    <body>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Expressions régluières (mémo)" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon md-icon--home"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+            
+            Classes de caractères
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/ldez/regex-memo" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <div class="md-nav__button md-logo">
+      
+        <i class="md-icon md-icon--home"></i>
+      
+    </div>
+    Expressions régluières (mémo)
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/ldez/regex-memo" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Accueil" class="md-nav__link">
+      Accueil
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../caracteres/" title="Caractères" class="md-nav__link">
+      Caractères
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../meta-caracteres/" title="Meta-caractères" class="md-nav__link">
+      Meta-caractères
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../assertions/" title="Assertions" class="md-nav__link">
+      Assertions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ensembles/" title="Ensembles" class="md-nav__link">
+      Ensembles
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Classes de caractères
+      </label>
+    
+    <a href="./" title="Classes de caractères" class="md-nav__link md-nav__link--active">
+      Classes de caractères
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes-de-caracteres" title="Classes de caractères" class="md-nav__link">
+    Classes de caractères
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basique" title="Basique" class="md-nav__link">
+    Basique
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posix" title="POSIX" class="md-nav__link">
+    POSIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode" title="Unicode" class="md-nav__link">
+    Unicode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode-block" title="Unicode Block" class="md-nav__link">
+    Unicode Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-specifiques" title="Java spécifiques" class="md-nav__link">
+    Java spécifiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../quantificateurs/" title="Quantificateurs" class="md-nav__link">
+      Quantificateurs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../groupes-de-capture/" title="Groupes de capture" class="md-nav__link">
+      Groupes de capture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../pieges/" title="Pièges" class="md-nav__link">
+      Pièges
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes-de-caracteres" title="Classes de caractères" class="md-nav__link">
+    Classes de caractères
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basique" title="Basique" class="md-nav__link">
+    Basique
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#posix" title="POSIX" class="md-nav__link">
+    POSIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode" title="Unicode" class="md-nav__link">
+    Unicode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode-block" title="Unicode Block" class="md-nav__link">
+    Unicode Block
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-specifiques" title="Java spécifiques" class="md-nav__link">
+    Java spécifiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ldez/regex-memo/edit/master/docs/classes-de-caracteres.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                  <h1>Classes de caractères</h1>
+                
+                <h2 id="classes-de-caracteres">Classes de caractères<a class="headerlink" href="#classes-de-caracteres" title="Permanent link">&para;</a></h2>
+<h3 id="basique">Basique<a class="headerlink" href="#basique" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\d</code></td>
+<td><code>[0-9]</code></td>
+<td>Un chiffre <code>[\p{Nd}]</code></td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td><code>[^0-9]</code></td>
+<td>un caractère qui n'est pas un chiffre</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td><code>[ \t\n\r\f\x0B]</code></td>
+<td>Un caractère blanc (espace, tab, new line...)</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td><code>[^\s]</code></td>
+<td>Un caractère non blanc</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td><code>[a-zA-Z_0-9]</code></td>
+<td>Un caractère de mot. <code>[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Pc}]</code></td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td><code>[^\w]</code></td>
+<td>Un caractère qui n'est pas un caractère de mot</td>
+</tr>
+<tr>
+<td><code>\O</code></td>
+<td></td>
+<td>Un chiffre octal</td>
+</tr>
+<tr>
+<td><code>\c</code></td>
+<td></td>
+<td>Caractère de contrôle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="posix">POSIX<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Alnum}</code></td>
+<td>Alphanumeric characters</td>
+</tr>
+<tr>
+<td><code>\p{Alpha}</code></td>
+<td>Alphabetic characters</td>
+</tr>
+<tr>
+<td><code>\p{ASCII}</code></td>
+<td>ASCII characters</td>
+</tr>
+<tr>
+<td><code>\p{Blank}</code></td>
+<td>Space and tab characters</td>
+</tr>
+<tr>
+<td><code>\p{Cntrl}</code></td>
+<td>Control characters</td>
+</tr>
+<tr>
+<td><code>\p{Digit}</code></td>
+<td>Numeric characters</td>
+</tr>
+<tr>
+<td><code>\p{Graph}</code></td>
+<td>printable and visible (without spaces)</td>
+</tr>
+<tr>
+<td><code>\p{Lower}</code></td>
+<td>Lower-case alphabetic</td>
+</tr>
+<tr>
+<td><code>\p{Print}</code></td>
+<td>Printable characters (with spaces)</td>
+</tr>
+<tr>
+<td><code>\p{Punct}</code></td>
+<td>Punctuation characters</td>
+</tr>
+<tr>
+<td><code>\p{Space}</code></td>
+<td>All whitespace characters, including line breaks</td>
+</tr>
+<tr>
+<td><code>\p{Upper}</code></td>
+<td>Upper-case alphabetic</td>
+</tr>
+<tr>
+<td><code>\p{XDigit}</code></td>
+<td>Hexadecimal digits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unicode">Unicode<a class="headerlink" href="#unicode" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Cc}</code></td>
+<td>control</td>
+<td>an ASCII <code>0x00..0x1F</code> or Latin-1<code>0x80..0x9F</code> control character.</td>
+</tr>
+<tr>
+<td><code>\p{Cf}</code></td>
+<td>format</td>
+<td>invisible formatting indicator.</td>
+</tr>
+<tr>
+<td><code>\p{Cn}</code></td>
+<td>unassigned</td>
+<td>any code point to which no character has been assigned.</td>
+</tr>
+<tr>
+<td><code>\p{Co}</code></td>
+<td>private use</td>
+<td>any code point reserved for private use.</td>
+</tr>
+<tr>
+<td><code>\p{Cs}</code></td>
+<td>surrogate</td>
+<td>one half of a surrogate pair in UTF-16 encoding.</td>
+</tr>
+<tr>
+<td><code>\p{C}</code></td>
+<td>control</td>
+<td>format</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{L1}</code></td>
+<td>latin-1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\p{LC}</code></td>
+<td>uppercase letter</td>
+<td>lowercase letter</td>
+</tr>
+<tr>
+<td><code>\p{LD}</code></td>
+<td>uppercase letter</td>
+<td>lowercase letter</td>
+</tr>
+<tr>
+<td><code>\p{Ll}</code></td>
+<td>lowercase letter</td>
+<td>a lowercase letter that has an uppercase variant.</td>
+</tr>
+<tr>
+<td><code>\p{Lm}</code></td>
+<td>modifier letter</td>
+<td>a special character that is used like a letter.</td>
+</tr>
+<tr>
+<td><code>\p{Lo}</code></td>
+<td>other letter</td>
+<td>a letter or ideograph that does not have lowercase and uppercase variants.</td>
+</tr>
+<tr>
+<td><code>\p{Lt}</code></td>
+<td>titlecase letter</td>
+<td>a letter that appears at the start of a word when only the first letter of the word is capitalized.</td>
+</tr>
+<tr>
+<td><code>\p{Lu}</code></td>
+<td>uppercase letter</td>
+<td>an uppercase letter that has a lowercase variant.</td>
+</tr>
+<tr>
+<td><code>\p{L}</code></td>
+<td>uppercase letter</td>
+<td>lowercase letter</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Mc}</code></td>
+<td>combining spacing mark</td>
+<td>a character intended to be combined with another character that takes up extra space (vowel signs in many Eastern languages).</td>
+</tr>
+<tr>
+<td><code>\p{Me}</code></td>
+<td>enclosing mark</td>
+<td>a character that encloses the character is is combined with (circle, square, keycap, etc.).</td>
+</tr>
+<tr>
+<td><code>\p{Mn}</code></td>
+<td>non spacing mark</td>
+<td>a character intended to be combined with another character without taking up extra space (e.g. accents, umlauts, etc.).</td>
+</tr>
+<tr>
+<td><code>\p{M}</code></td>
+<td>non spacing mark</td>
+<td>enclosing mark</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Nd}</code></td>
+<td>decimal digit number</td>
+<td>a digit zero through nine in any script except ideographic scripts.</td>
+</tr>
+<tr>
+<td><code>\p{Nl}</code></td>
+<td>letter number</td>
+<td>a number that looks like a letter, such as a Roman numeral.</td>
+</tr>
+<tr>
+<td><code>\p{No}</code></td>
+<td>other number</td>
+<td>a superscript or subscript digit, or a number that is not a digit <code>0..9</code> (excluding numbers from ideographic scripts).</td>
+</tr>
+<tr>
+<td><code>\p{N}</code></td>
+<td>decimal digit number</td>
+<td>letter number</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Pc}</code></td>
+<td>connector punctuation</td>
+<td>a punctuation character such as an underscore that connects words.</td>
+</tr>
+<tr>
+<td><code>\p{Pd}</code></td>
+<td>dash punctuation</td>
+<td>any kind of hyphen or dash.</td>
+</tr>
+<tr>
+<td><code>\p{Pe}</code></td>
+<td>end punctuation</td>
+<td>any kind of closing bracket.</td>
+</tr>
+<tr>
+<td><code>\p{Pf}</code></td>
+<td>final quote punctuation</td>
+<td>any kind of closing quote.</td>
+</tr>
+<tr>
+<td><code>\p{Pi}</code></td>
+<td>initial quote punctuation</td>
+<td>any kind of opening quote.</td>
+</tr>
+<tr>
+<td><code>\p{Po}</code></td>
+<td>other punctuation</td>
+<td>any kind of punctuation character that is not a dash, bracket, quote or connector.</td>
+</tr>
+<tr>
+<td><code>\p{Ps}</code></td>
+<td>start punctuation</td>
+<td>any kind of opening bracket.</td>
+</tr>
+<tr>
+<td><code>\p{P}</code></td>
+<td>dash punctuation</td>
+<td>start punctuation</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{Sc}</code></td>
+<td>currency symbol</td>
+<td>any currency sign.</td>
+</tr>
+<tr>
+<td><code>\p{Sk}</code></td>
+<td>modifier symbol</td>
+<td>a combining character (mark) as a full character on its own.</td>
+</tr>
+<tr>
+<td><code>\p{Sm}</code></td>
+<td>math symbol</td>
+<td>any mathematical symbol.</td>
+</tr>
+<tr>
+<td><code>\p{So}</code></td>
+<td>other symbol</td>
+<td>various symbols that are not math symbols, currency signs, or combining characters.</td>
+</tr>
+<tr>
+<td><code>\p{S}</code></td>
+<td>math symbol</td>
+<td>currency symbol</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unicode-block">Unicode Block<a class="headerlink" href="#unicode-block" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{InAegeanNumbers}</code></td>
+<td>Aegean Numbers</td>
+</tr>
+<tr>
+<td><code>\p{InAlphabeticPresentationForms}</code></td>
+<td>Alphabetic Presentation Forms</td>
+</tr>
+<tr>
+<td><code>\p{InArabic}</code></td>
+<td>Arabic</td>
+</tr>
+<tr>
+<td><code>\p{InArabicPresentationForms-A}</code></td>
+<td>Arabic Presentation Forms-A</td>
+</tr>
+<tr>
+<td><code>\p{InArabicPresentationForms-B}</code></td>
+<td>Arabic Presentation Forms-B</td>
+</tr>
+<tr>
+<td><code>\p{InArmenian}</code></td>
+<td>Armenian</td>
+</tr>
+<tr>
+<td><code>\p{InArrows}</code></td>
+<td>Arrows</td>
+</tr>
+<tr>
+<td><code>\p{InBasicLatin}</code></td>
+<td>Basic Latin</td>
+</tr>
+<tr>
+<td><code>\p{InBengali}</code></td>
+<td>Bengali</td>
+</tr>
+<tr>
+<td><code>\p{InBlockElements}</code></td>
+<td>Block Elements</td>
+</tr>
+<tr>
+<td><code>\p{InBopomofo}</code></td>
+<td>Bopomofo</td>
+</tr>
+<tr>
+<td><code>\p{InBopomofoExtended}</code></td>
+<td>Bopomofo Extended</td>
+</tr>
+<tr>
+<td><code>\p{InBoxDrawing}</code></td>
+<td>Box Drawing</td>
+</tr>
+<tr>
+<td><code>\p{InBraillePatterns}</code></td>
+<td>Braille Patterns</td>
+</tr>
+<tr>
+<td><code>\p{InBuhid}</code></td>
+<td>Buhid</td>
+</tr>
+<tr>
+<td><code>\p{InByzantineMusicalSymbols}</code></td>
+<td>Byzantine Musical Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InCherokee}</code></td>
+<td>Cherokee</td>
+</tr>
+<tr>
+<td><code>\p{InCJKCompatibilityForms}</code></td>
+<td>CJK Compatibility Forms</td>
+</tr>
+<tr>
+<td><code>\p{InCJKCompatibilityIdeographs}</code></td>
+<td>CJK Compatibility</td>
+</tr>
+<tr>
+<td><code>\p{InCJKCompatibilityIdeographs}</code></td>
+<td>CJK Compatibility Ideographs</td>
+</tr>
+<tr>
+<td><code>\p{InCJKCompatibilityIdeographsSupplement}</code></td>
+<td>CJK Compatibility Ideographs Supplement</td>
+</tr>
+<tr>
+<td><code>\p{InCJKRadicalsSupplement}</code></td>
+<td>CJK Radicals Supplement</td>
+</tr>
+<tr>
+<td><code>\p{InCJKSymbolsandPunctuation}</code></td>
+<td>CJK Symbols and Punctuation</td>
+</tr>
+<tr>
+<td><code>\p{InCJKUnifiedIdeographs}</code></td>
+<td>CJK Unified Ideographs</td>
+</tr>
+<tr>
+<td><code>\p{InCJKUnifiedIdeographsExtensionA}</code></td>
+<td>CJK Unified Ideographs Extension A</td>
+</tr>
+<tr>
+<td><code>\p{InCJKUnifiedIdeographsExtensionB}</code></td>
+<td>CJK Unified Ideographs Extension B</td>
+</tr>
+<tr>
+<td><code>\p{InCombiningDiacriticalMarks}</code></td>
+<td>Combining Diacritical Marks</td>
+</tr>
+<tr>
+<td><code>\p{InCombiningHalfMarks}</code></td>
+<td>Combining Half Marks</td>
+</tr>
+<tr>
+<td><code>\p{InCombiningMarksforSymbols}</code></td>
+<td>Combining Diacritical Marks for Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InControlPictures}</code></td>
+<td>Control Pictures</td>
+</tr>
+<tr>
+<td><code>\p{InCurrencySymbols}</code></td>
+<td>Currency Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InCypriotSyllabary}</code></td>
+<td>Cypriot Syllabary</td>
+</tr>
+<tr>
+<td><code>\p{InCyrillic}</code></td>
+<td>Cyrillic</td>
+</tr>
+<tr>
+<td><code>\p{InCyrillicSupplementary}</code></td>
+<td>Cyrillic Supplementary</td>
+</tr>
+<tr>
+<td><code>\p{InDeseret}</code></td>
+<td>Deseret</td>
+</tr>
+<tr>
+<td><code>\p{InDevanagari}</code></td>
+<td>Devanagari</td>
+</tr>
+<tr>
+<td><code>\p{InDingbats}</code></td>
+<td>Dingbats</td>
+</tr>
+<tr>
+<td><code>\p{InEnclosedAlphanumerics}</code></td>
+<td>Enclosed Alphanumerics</td>
+</tr>
+<tr>
+<td><code>\p{InEnclosedCJKLettersandMonths}</code></td>
+<td>Enclosed CJK Letters and Months</td>
+</tr>
+<tr>
+<td><code>\p{InEthiopic}</code></td>
+<td>Ethiopic</td>
+</tr>
+<tr>
+<td><code>\p{InGeneralPunctuation}</code></td>
+<td>General Punctuation</td>
+</tr>
+<tr>
+<td><code>\p{InGeometricShapes}</code></td>
+<td>Geometric Shapes</td>
+</tr>
+<tr>
+<td><code>\p{InGeorgian}</code></td>
+<td>Georgian</td>
+</tr>
+<tr>
+<td><code>\p{InGothic}</code></td>
+<td>Gothic</td>
+</tr>
+<tr>
+<td><code>\p{InGreek}</code></td>
+<td>Greek</td>
+</tr>
+<tr>
+<td><code>\p{InGreekandCoptic}</code></td>
+<td>Greek and Coptic</td>
+</tr>
+<tr>
+<td><code>\p{InGreekExtended}</code></td>
+<td>Greek Extended</td>
+</tr>
+<tr>
+<td><code>\p{InGujarati}</code></td>
+<td>Gujarati</td>
+</tr>
+<tr>
+<td><code>\p{InGurmukhi}</code></td>
+<td>Gurmukhi</td>
+</tr>
+<tr>
+<td><code>\p{InHalfwidthandFullwidthForms}</code></td>
+<td>Halfwidth and Fullwidth Forms</td>
+</tr>
+<tr>
+<td><code>\p{InHangulCompatibilityJamo}</code></td>
+<td>Hangul Compatibility Jamo</td>
+</tr>
+<tr>
+<td><code>\p{InHangulJamo}</code></td>
+<td>Hangul Jamo</td>
+</tr>
+<tr>
+<td><code>\p{InHangulSyllables}</code></td>
+<td>Hangul Syllables</td>
+</tr>
+<tr>
+<td><code>\p{InHanunoo}</code></td>
+<td>Hanunoo</td>
+</tr>
+<tr>
+<td><code>\p{InHebrew}</code></td>
+<td>Hebrew</td>
+</tr>
+<tr>
+<td><code>\p{InHighPrivateUseSurrogates}</code></td>
+<td>High Private Use Surrogates</td>
+</tr>
+<tr>
+<td><code>\p{InHighSurrogates}</code></td>
+<td>High Surrogates</td>
+</tr>
+<tr>
+<td><code>\p{InHiragana}</code></td>
+<td>Hiragana</td>
+</tr>
+<tr>
+<td><code>\p{InIdeographicDescriptionCharacters}</code></td>
+<td>Ideographic Description Characters</td>
+</tr>
+<tr>
+<td><code>\p{InIPAExtensions}</code></td>
+<td>IPA Extensions</td>
+</tr>
+<tr>
+<td><code>\p{InKanbun}</code></td>
+<td>Kanbun</td>
+</tr>
+<tr>
+<td><code>\p{InKangxiRadicals}</code></td>
+<td>Kangxi Radicals</td>
+</tr>
+<tr>
+<td><code>\p{InKannada}</code></td>
+<td>Kannada</td>
+</tr>
+<tr>
+<td><code>\p{InKatakana}</code></td>
+<td>Katakana</td>
+</tr>
+<tr>
+<td><code>\p{InKatakanaPhoneticExtensions}</code></td>
+<td>Katakana Phonetic Extensions</td>
+</tr>
+<tr>
+<td><code>\p{InKhmer}</code></td>
+<td>Khmer</td>
+</tr>
+<tr>
+<td><code>\p{InKhmerSymbols}</code></td>
+<td>Khmer Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InLao}</code></td>
+<td>Lao</td>
+</tr>
+<tr>
+<td><code>\p{InLatin-1Supplement}</code></td>
+<td>Latin-1 Supplement</td>
+</tr>
+<tr>
+<td><code>\p{InLatinExtended-A}</code></td>
+<td>Latin Extended-A</td>
+</tr>
+<tr>
+<td><code>\p{InLatinExtended-B}</code></td>
+<td>Latin Extended-B</td>
+</tr>
+<tr>
+<td><code>\p{InLatinExtendedAdditional}</code></td>
+<td>Latin Extended Additional</td>
+</tr>
+<tr>
+<td><code>\p{InLetterlikeSymbols}</code></td>
+<td>Letterlike Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InLimbu}</code></td>
+<td>Limbu</td>
+</tr>
+<tr>
+<td><code>\p{InLinearBIdeograms}</code></td>
+<td>Linear B Ideograms</td>
+</tr>
+<tr>
+<td><code>\p{InLinearBSyllabary}</code></td>
+<td>Linear B Syllabary</td>
+</tr>
+<tr>
+<td><code>\p{InLowSurrogates}</code></td>
+<td>Low Surrogates</td>
+</tr>
+<tr>
+<td><code>\p{InMalayalam}</code></td>
+<td>Malayalam</td>
+</tr>
+<tr>
+<td><code>\p{InMathematicalAlphanumericSymbols}</code></td>
+<td>Mathematical Alphanumeric Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InMathematicalOperators}</code></td>
+<td>Mathematical Operators</td>
+</tr>
+<tr>
+<td><code>\p{InMiscellaneousMathematicalSymbols-A}</code></td>
+<td>Miscellaneous Mathematical Symbols-A</td>
+</tr>
+<tr>
+<td><code>\p{InMiscellaneousMathematicalSymbols-B}</code></td>
+<td>Miscellaneous Mathematical Symbols-B</td>
+</tr>
+<tr>
+<td><code>\p{InMiscellaneousSymbols}</code></td>
+<td>Miscellaneous Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InMiscellaneousSymbolsandArrows}</code></td>
+<td>Miscellaneous Symbols and Arrows</td>
+</tr>
+<tr>
+<td><code>\p{InMiscellaneousTechnical}</code></td>
+<td>Miscellaneous Technical</td>
+</tr>
+<tr>
+<td><code>\p{InMongolian}</code></td>
+<td>Mongolian</td>
+</tr>
+<tr>
+<td><code>\p{InMusicalSymbols}</code></td>
+<td>Musical Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InMyanmar}</code></td>
+<td>Myanmar</td>
+</tr>
+<tr>
+<td><code>\p{InNumberForms}</code></td>
+<td>Number Forms</td>
+</tr>
+<tr>
+<td><code>\p{InOgham}</code></td>
+<td>Ogham</td>
+</tr>
+<tr>
+<td><code>\p{InOldItalic}</code></td>
+<td>Old Italic</td>
+</tr>
+<tr>
+<td><code>\p{InOpticalCharacterRecognition}</code></td>
+<td>Optical Character Recognition</td>
+</tr>
+<tr>
+<td><code>\p{InOriya}</code></td>
+<td>Oriya</td>
+</tr>
+<tr>
+<td><code>\p{InOsmanya}</code></td>
+<td>Osmanya</td>
+</tr>
+<tr>
+<td><code>\p{InPhoneticExtensions}</code></td>
+<td>Phonetic Extensions</td>
+</tr>
+<tr>
+<td><code>\p{InRunic}</code></td>
+<td>Runic</td>
+</tr>
+<tr>
+<td><code>\p{InShavian}</code></td>
+<td>Shavian</td>
+</tr>
+<tr>
+<td><code>\p{InSinhala}</code></td>
+<td>Sinhala</td>
+</tr>
+<tr>
+<td><code>\p{InSmallFormVariants}</code></td>
+<td>Small Form Variants</td>
+</tr>
+<tr>
+<td><code>\p{InSpacingModifierLetters}</code></td>
+<td>Spacing Modifier Letters</td>
+</tr>
+<tr>
+<td><code>\p{InSpecials}</code></td>
+<td>Specials</td>
+</tr>
+<tr>
+<td><code>\p{InSuperscriptsandSubscripts}</code></td>
+<td>Superscripts and Subscripts</td>
+</tr>
+<tr>
+<td><code>\p{InSupplementalArrows-A}</code></td>
+<td>Supplemental Arrows-A</td>
+</tr>
+<tr>
+<td><code>\p{InSupplementalArrows-B}</code></td>
+<td>Supplemental Arrows-B</td>
+</tr>
+<tr>
+<td><code>\p{InSupplementalMathematicalOperators}</code></td>
+<td>Supplemental Mathematical Operators</td>
+</tr>
+<tr>
+<td><code>\p{InSupplementaryPrivateUseArea-A}</code></td>
+<td>Supplementary Private Use Area-A</td>
+</tr>
+<tr>
+<td><code>\p{InSupplementaryPrivateUseArea-B}</code></td>
+<td>Supplementary Private Use Area-B</td>
+</tr>
+<tr>
+<td><code>\p{InSyriac}</code></td>
+<td>Syriac</td>
+</tr>
+<tr>
+<td><code>\p{InTagalog}</code></td>
+<td>Tagalog</td>
+</tr>
+<tr>
+<td><code>\p{InTagbanwa}</code></td>
+<td>Tagbanwa</td>
+</tr>
+<tr>
+<td><code>\p{InTags}</code></td>
+<td>Tags</td>
+</tr>
+<tr>
+<td><code>\p{InTaiLe}</code></td>
+<td>Tai Le</td>
+</tr>
+<tr>
+<td><code>\p{InTaiXuanJingSymbols}</code></td>
+<td>Tai Xuan Jing Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InTamil}</code></td>
+<td>Tamil</td>
+</tr>
+<tr>
+<td><code>\p{InTelugu}</code></td>
+<td>Telugu</td>
+</tr>
+<tr>
+<td><code>\p{InThaana}</code></td>
+<td>Thaana</td>
+</tr>
+<tr>
+<td><code>\p{InThai}</code></td>
+<td>Thai</td>
+</tr>
+<tr>
+<td><code>\p{InTibetan}</code></td>
+<td>Tibetan</td>
+</tr>
+<tr>
+<td><code>\p{InUgaritic}</code></td>
+<td>Ugaritic</td>
+</tr>
+<tr>
+<td><code>\p{InUnifiedCanadianAboriginalSyllabics}</code></td>
+<td>Unified Canadian Aboriginal Syllabics</td>
+</tr>
+<tr>
+<td><code>\p{InVariationSelectors}</code></td>
+<td>Variation Selectors</td>
+</tr>
+<tr>
+<td><code>\p{InVariationSelectorsSupplement}</code></td>
+<td>Variation Selectors Supplement</td>
+</tr>
+<tr>
+<td><code>\p{InYijingHexagramSymbols}</code></td>
+<td>Yijing Hexagram Symbols</td>
+</tr>
+<tr>
+<td><code>\p{InYiRadicals}</code></td>
+<td>Yi Radicals</td>
+</tr>
+<tr>
+<td><code>\p{InYiSyllables}</code></td>
+<td>Yi Syllables</td>
+</tr>
+</tbody>
+</table>
+<h3 id="java-specifiques">Java spécifiques<a class="headerlink" href="#java-specifiques" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\p{javaDefined}</code></td>
+<td><code>Character.isDefined(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaDigit}</code></td>
+<td><code>Character.isDigit(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaIdentifierIgnorable}</code></td>
+<td><code>Character.isIdentifierIgnorable(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaISOControl}</code></td>
+<td><code>Character.isISOControl(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaJavaIdentifierPart}</code></td>
+<td><code>Character.isJavaIdentifierPart(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaJavaIdentifierStart}</code></td>
+<td><code>Character.isJavaIdentifierStart(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaLetterOrDigit}</code></td>
+<td><code>Character.isLetterOrDigit(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaLetter}</code></td>
+<td><code>Character.isLetter(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaLowerCase}</code></td>
+<td><code>Character.isLowerCase(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaMirrored}</code></td>
+<td><code>Character.isMirrored(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaSpaceChar}</code></td>
+<td><code>Character.isSpaceChar(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaTitleCase}</code></td>
+<td><code>Character.isTitleCase(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaUnicodeIdentifierPart}</code></td>
+<td><code>Character.isUnicodeIdentifierPart(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaUnicodeIdentifierStart}</code></td>
+<td><code>Character.isUnicodeIdentifierStart(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaUpperCase}</code></td>
+<td><code>Character.isUpperCase(ch)</code></td>
+</tr>
+<tr>
+<td><code>\p{javaWhitespace}</code></td>
+<td><code>Character.isWhitespace(ch)</code></td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+    <!-- Link to previous and/or next page -->
+    
+    <!--<div class="md-footer-nav">-->
+        <!--<nav class="md-footer-nav__inner md-grid">-->
+            <!-- -->
+            <!-- Link to previous page -->
+            <!---->
+            <!--<a href="../ensembles/"-->
+               <!--title="Ensembles"-->
+               <!--class="md-flex md-footer-nav__link md-footer-nav__link&#45;&#45;prev"-->
+               <!--rel="prev">-->
+                <!--<div class="md-flex__cell md-flex__cell&#45;&#45;shrink">-->
+                    <!--<i class="md-icon md-icon&#45;&#45;arrow-back-->
+                    <!--md-footer-nav__button"></i>-->
+                <!--</div>-->
+                <!--<div class="md-flex__cell md-flex__cell&#45;&#45;stretch-->
+                  <!--md-footer-nav__title">-->
+              <!--<span class="md-flex__ellipsis">-->
+                <!--<span class="md-footer-nav__direction">-->
+                  <!--Previous -->
+                <!--</span>-->
+                <!--Ensembles-->
+              <!--</span>-->
+                <!--</div>-->
+            <!--</a>-->
+            <!---->
+            <!-- -->
+            <!-- Link to next page -->
+            <!---->
+            <!--<a href="../quantificateurs/" title="Quantificateurs"-->
+               <!--class="md-flex md-footer-nav__link md-footer-nav__link&#45;&#45;next"-->
+               <!--rel="next">-->
+                <!--<div class="md-flex__cell md-flex__cell&#45;&#45;stretch-->
+                  <!--md-footer-nav__title">-->
+              <!--<span class="md-flex__ellipsis">-->
+                <!--<span class="md-footer-nav__direction">-->
+                  <!--Next-->
+                <!--</span>-->
+                <!--Quantificateurs-->
+              <!--</span>-->
+                <!--</div>-->
+                <!--<div class="md-flex__cell md-flex__cell&#45;&#45;shrink">-->
+                    <!--<i class="md-icon md-icon&#45;&#45;arrow-forward-->
+                    <!--md-footer-nav__button"></i>-->
+                <!--</div>-->
+            <!--</a>-->
+            <!---->
+        <!--</nav>-->
+    <!--</div>-->
+    
+
+    <!-- Further information -->
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+
+            <!-- Copyright and theme information -->
+            <div class="md-footer-copyright">
+                
+                powered by
+                <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+                and
+                <a href="http://squidfunk.github.io/mkdocs-material/"
+                   title="Material for MkDocs">
+                    Material for MkDocs</a>
+            </div>
+
+            <!-- Social links -->
+            
+            
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/ldez" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://twitter.com/ludnadez" class="md-footer-social__link fa fa-twitter"></a>
+    
+  </div>
+
+            
+        </div>
+    </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application-f3ab9e5ff8.js"></script>
+      
+      
+      <script>app.initialize({url:{base:".."}})</script>
+      
+    
+    
+      
+      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-62168601-5","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      
+    
+  </body>
+</html>
